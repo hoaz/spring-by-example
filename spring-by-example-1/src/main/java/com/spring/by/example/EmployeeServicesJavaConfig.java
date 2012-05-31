@@ -1,13 +1,9 @@
 package com.spring.by.example;
 
-import static com.spring.by.example.util.EmployeeUtil.whoAmI;
-
 import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -49,19 +45,9 @@ public class EmployeeServicesJavaConfig {
 
 	@Bean
 	public AnotherEmployeeService anotherEmployeeService() {
-		AnotherEmployeeService result = new AnotherEmployeeServiceImpl();
-		((AnotherEmployeeServiceImpl) result).setEmployeeDS(employeeDS());
+		AnotherEmployeeServiceImpl result = new AnotherEmployeeServiceImpl();
+		result.setEmployeeDS(employeeDS());
 		return result;
-	}
-
-	public static void main(String[] args) {
-
-		ApplicationContext context = new AnnotationConfigApplicationContext(EmployeeServicesJavaConfig.class);
-		AnotherEmployeeService anotherEmployeeService = context.getBean(AnotherEmployeeService.class);
-		for (Employee employee : anotherEmployeeService.getEmployeeListByPosition(Position.SENIOR)) {
-			whoAmI(employee);
-		}
-
 	}
 
 }
