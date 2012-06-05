@@ -1,4 +1,4 @@
-package com.lohika.domain;
+package com.spring.by.example.domain;
 
 import java.util.Set;
 
@@ -18,8 +18,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name  = "lohika_employee")
-public class LohikaEmployee {
+@Table(name  = "employee")
+public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
@@ -42,10 +42,10 @@ public class LohikaEmployee {
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "project_mates", joinColumns = @JoinColumn(name = "employee1", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "employee2", referencedColumnName = "id"))	
-	private Set<LohikaEmployee> projectMates;
+	private Set<Employee> projectMates;
 
 	
-	public LohikaEmployee() {
+	public Employee() {
 		
 	}
 
@@ -81,11 +81,11 @@ public class LohikaEmployee {
 		this.project = project;
 	}
 
-	public Set<LohikaEmployee> getProjectMates() {
+	public Set<Employee> getProjectMates() {
 		return projectMates;
 	}
 
-	public void setProjectMates(Set<LohikaEmployee> projectMates) {
+	public void setProjectMates(Set<Employee> projectMates) {
 		this.projectMates = projectMates;
 	}	
 

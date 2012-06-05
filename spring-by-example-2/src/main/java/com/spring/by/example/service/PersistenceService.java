@@ -1,4 +1,4 @@
-package com.lohika.service;
+package com.spring.by.example.service;
 
 import java.io.Serializable;
 import java.util.List;

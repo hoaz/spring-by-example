@@ -1,4 +1,4 @@
-package com.lohika.dao;
+package com.spring.by.example.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;

@@ -17,7 +17,7 @@
 	
 	<context:annotation-config />	
 	
-	<context:component-scan base-package="com.lohika" />
+	<context:component-scan base-package="com.spring.by.example" />
 	
 	<tx:annotation-driven/>
 

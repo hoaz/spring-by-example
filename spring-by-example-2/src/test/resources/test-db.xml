@@ -41,7 +41,7 @@
 	</bean>
 
 	<util:list id="annotatedPersistenceClasses">
-		<value>com.lohika.domain.LohikaEmployee</value>
+		<value>com.spring.by.example.domain.Employee</value>
 	</util:list>
 
 	<util:properties id="hibernateProperties" location="hibernate.properties" />

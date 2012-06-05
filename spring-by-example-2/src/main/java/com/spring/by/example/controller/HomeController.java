@@ -1,4 +1,4 @@
-package com.lohika.controller;
+package com.spring.by.example.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

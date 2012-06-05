@@ -16,8 +16,8 @@
 	<import resource="test-db.xml" />
 
 	
-	<context:component-scan base-package="com.lohika.domain" />	
-	<context:component-scan base-package="com.lohika.dao" />
-	<context:component-scan base-package="com.lohika.service" />
+	<context:component-scan base-package="com.spring.by.example.domain" />	
+	<context:component-scan base-package="com.spring.by.example.dao" />
+	<context:component-scan base-package="com.spring.by.example.service" />
 
 </beans>

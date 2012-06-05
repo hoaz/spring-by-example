@@ -33,7 +33,7 @@
 
 	<servlet-mapping>
 		<servlet-name>DispatcherServlet</servlet-name>
-		<url-pattern>/lohikaEmployee/*</url-pattern>
+		<url-pattern>/employee/*</url-pattern>
 	</servlet-mapping>
 
 <!-- 	<servlet-mapping> -->

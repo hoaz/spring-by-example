@@ -1,4 +1,4 @@
-package com.lohika.controller;
+package com.spring.by.example.controller;
 
 import java.util.List;
 
@@ -17,27 +17,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.lohika.domain.LohikaEmployee;
-import com.lohika.service.PersistenceService;
+import com.spring.by.example.domain.Employee;
+import com.spring.by.example.service.PersistenceService;
 
 @Controller
 @RequestMapping("/employee/")
-public class LohikaEmployeeController {
+public class EmployeeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(LohikaEmployeeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
 	@Resource
-	private PersistenceService<LohikaEmployee, Long> lohikaEmployeeService;
+	private PersistenceService<Employee, Long> employeeService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "list")
-	public ModelAndView listLohikaEmployees() {
+	public ModelAndView listEmployees() {
 		logger.debug("Received request to list persons");
 		ModelAndView mav = new ModelAndView();
-		List<LohikaEmployee> lohikaEmployeeList = lohikaEmployeeService.find();
+		List<Employee> employeeList = employeeService.find();
 
-		logger.debug("Person Listing count = " + lohikaEmployeeList.size());
+		logger.debug("Person Listing count = " + employeeList.size());
 
-		mav.addObject("lohikaEmployeeList", lohikaEmployeeList);
+		mav.addObject("employeeList", employeeList);
 
 		mav.setViewName("list");
 
@@ -50,14 +50,14 @@ public class LohikaEmployeeController {
 		logger.debug("Received request to edit person id : " + id);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("edit");
-		LohikaEmployee lohikaEmployee = null;
+		Employee employee = null;
 		if (id == null) {
-			lohikaEmployee = new LohikaEmployee();
+			employee = new Employee();
 		} else {
-			lohikaEmployee = lohikaEmployeeService.find(id);
+			employee = employeeService.find(id);
 		}
 
-		mav.addObject("lohikaEmployee", lohikaEmployee);
+		mav.addObject("employee", employee);
 		return mav;
 
 	}
@@ -67,29 +67,29 @@ public class LohikaEmployeeController {
 		logger.debug("Received request to edit person id : " + id);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("edit");
-		LohikaEmployee lohikaEmployee = null;
+		Employee employee = null;
 		if (id == null) {
-			lohikaEmployee = new LohikaEmployee();
+			employee = new Employee();
 		} else {
-			lohikaEmployee = lohikaEmployeeService.find(id);
-			if (lohikaEmployee == null) {
+			employee = employeeService.find(id);
+			if (employee == null) {
 				mav.setView(new RedirectView("/employee/edit"));
 				return mav;
 			}
 		}
 
-		mav.addObject("lohikaEmployee", lohikaEmployee);
+		mav.addObject("employee", employee);
 		return mav;
 
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "edit")
-	public String savePerson(@Valid @ModelAttribute LohikaEmployee lohikaEmployee, BindingResult bindingResult) {
-		logger.debug("Received postback on person " + lohikaEmployee);
+	public String savePerson(@Valid @ModelAttribute Employee employee, BindingResult bindingResult) {
+		logger.debug("Received postback on person " + employee);
 		if (bindingResult.hasErrors()) {
 			return "edit";
 		} else {
-			lohikaEmployeeService.saveOrUpdate(lohikaEmployee);
+			employeeService.saveOrUpdate(employee);
 			return "redirect:list";
 		}
 
@@ -98,9 +98,9 @@ public class LohikaEmployeeController {
 	@RequestMapping(method = RequestMethod.GET, value = "delete")
 	public String deleteEmployeeParam(@RequestParam(value = "id", required = false) Long id) {
 		logger.debug("Received request to delete person id : " + id);
-		LohikaEmployee lohikaEmployee = lohikaEmployeeService.find(id);
-		if (lohikaEmployee != null) {
-			lohikaEmployeeService.delete(lohikaEmployee);
+		Employee employee = employeeService.find(id);
+		if (employee != null) {
+			employeeService.delete(employee);
 		}
 		return "redirect:list";
 
@@ -109,9 +109,9 @@ public class LohikaEmployeeController {
 	@RequestMapping(method = RequestMethod.GET, value = "delete/{id}")
 	public String deleteEmployeePath(@PathVariable Long id) {
 		logger.debug("Received request to delete person id : " + id);
-		LohikaEmployee lohikaEmployee = lohikaEmployeeService.find(id);
-		if (lohikaEmployee != null) {
-			lohikaEmployeeService.delete(lohikaEmployee);
+		Employee employee = employeeService.find(id);
+		if (employee != null) {
+			employeeService.delete(employee);
 		}
 		return "redirect:list";
 

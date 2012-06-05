@@ -7,10 +7,10 @@
 </head>
 <body>
 <h1>
-	Editing Employee ${lohikaEmployee.id} - ${lohikaEmployee.lastName}  ${lohikaEmployee.firstName}  
+	Editing Employee ${employee.id} - ${employee.lastName}  ${employee.firstName}  
 </h1>
-<form:form commandName="lohikaEmployee" style="padding:8px">
-    ID - ${lohikaEmployee.id}<br/>
+<form:form commandName="employee" style="padding:8px">
+    ID - ${employee.id}<br/>
     <p>
         First Name:<br/>
         <form:errors path="firstName" cssStyle="color:red" /><br />
