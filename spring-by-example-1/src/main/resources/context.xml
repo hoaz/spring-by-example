@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-						http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -20,18 +21,12 @@
 		p:position="${eugene.position}" p:role="${eugene.role}" p:technology="${eugene.technology}"
 		p:field="${eugene.field}" p:buddySet-ref="eugeneBuddySet" />
 
-	<bean name="myBuddySet" class="java.util.HashSet">
-		<constructor-arg>
-			<set>
-				<ref bean="eugene" />
-			</set>
-		</constructor-arg>
-	</bean>
-	<bean name="eugeneBuddySet" class="java.util.HashSet">
-		<constructor-arg>
-			<set>
-				<ref bean="me" />
-			</set>
-		</constructor-arg>
-	</bean>
+	<util:set id="myBuddySet">
+		<ref bean="eugene" />
+	</util:set>
+
+	<util:set id="eugeneBuddySet">
+		<ref bean="me" />
+	</util:set>
+
 </beans>

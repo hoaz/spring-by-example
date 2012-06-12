@@ -14,7 +14,7 @@
 		<context:component-scan base-package="com.spring.by.example.ds" />
 		<context:property-placeholder location="classpath*:employee.properties" ignore-unresolvable="true" />
 		
- 		<aop:aspectj-autoproxy />		
-		<context:component-scan base-package="com.spring.by.example.aspect" />
+ 		<!-- aop:aspectj-autoproxy />		
+		<context:component-scan base-package="com.spring.by.example.aspect" /-->
 
 </beans>

@@ -24,7 +24,7 @@ public class EmployeeServicesJavaConfigTest {
 	@Test
 	public void outputWhoAmI() {
 		Set<Employee> candidates = anotherEmployeeService.getEmployeeListByPosition(Position.SENIOR);
-		assertEquals(1, candidates.size());
+		assertEquals(2, candidates.size());
 
 		for (Employee employee : candidates) {
 			whoAmI(employee);
