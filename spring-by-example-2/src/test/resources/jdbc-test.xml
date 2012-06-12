@@ -13,7 +13,7 @@
 		<jdbc:script location="classpath:sql/init.sql"/>
 	</jdbc:embedded-database>
 
-	<context:component-scan base-package="com.spring.by.example.dao" />
+	<context:component-scan base-package="com.spring.by.example.dao.jdbc" />
 
 
 </beans>
